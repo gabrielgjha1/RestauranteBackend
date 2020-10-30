@@ -9,8 +9,6 @@ require('dotenv').config();
 const app = express();
 
 
-//base de datos 
-dbConnection();
 
 
 //configurar cors
@@ -18,6 +16,12 @@ app.use(cors());
 
 //lectuara y parseo del body 
 app.use(express.json());
+
+//base de datos 
+dbConnection();
+
+//directorioPublico
+app.use(express.static('public'))
 
 app.use('/api/usuarios',require('./routes/usuario'));
 app.use('/api/login',require('./routes/login'));

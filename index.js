@@ -27,7 +27,7 @@ app.use('/api/usuarios',require('./routes/usuario'));
 app.use('/api/login',require('./routes/login'));
 app.use('/api/comidas',require('./routes/comidas'));
 app.use('/api/uploads',require('./routes/uploads'));
-app.use('/api/compras',require('./routes/compras'))
+app.use('/api/compras',require('./routes/compras' ))
 
 app.listen(process.env.PORT,()=>{
 

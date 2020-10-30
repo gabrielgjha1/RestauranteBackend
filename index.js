@@ -16,19 +16,14 @@ dbConnection();
 //configurar cors
 app.use(cors());
 
-app.get('/', (req,res)=>{
+//lectuara y parseo del body 
+app.use(express.json());
 
-
-    res.status(200).json({
-
-        status:true,
-        mensaje:"hola"
-        
-    })
-
-
-});
-
+app.use('/api/usuarios',require('./routes/usuario'));
+app.use('/api/login',require('./routes/login'));
+app.use('/api/comidas',require('./routes/comidas'));
+app.use('/api/uploads',require('./routes/uploads'));
+app.use('/api/compras',require('./routes/compras'))
 
 app.listen(process.env.PORT,()=>{
 

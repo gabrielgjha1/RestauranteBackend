@@ -64,7 +64,9 @@ const GuardarCompra = async (req,res)=>{
 
 const ActualizarCompra = async (req,res)=>{
     const id = req.params.id;
-    
+    var mensaje ="";
+    var cuerpo ="";
+    var subjetct = "";
     try {
 
         const Compraid = await Compra.findById(id).populate('usuario');
@@ -82,6 +84,20 @@ const ActualizarCompra = async (req,res)=>{
 
         Compraid.enviado==true? Compraid.enviado=false:Compraid.enviado=true;
    
+        if (Compraid===true){
+
+
+            mensaje="Su pedido fue enviado :)";
+            cuerpo="Pronto le llegara un mensaje cuando el pedido este llegando";
+            subjetct="Su pedido se ha enviado"
+        }else{
+
+            mensaje="Su pedido se a retrasado";
+            cuerpo="Espere un mensaje de confirmacion,esperamos sus disculpas";
+            subjetct="Su pedido se ha retrasado";
+
+        }
+
         const compra = await Compra.findByIdAndUpdate(id,{enviado:Compraid.enviado});
         console.log(Compraid.usuario.email)
         
@@ -98,11 +114,11 @@ const ActualizarCompra = async (req,res)=>{
         let info = await transporter.sendMail({
             from: 'Restauranteprueba1@gmail.com', // sender address
             to: Compraid.usuario.email, // list of receivers
-            subject: "Enviado desde node mailer", // Subject line
-            text: "Hola mundo?", // plain text body
+            subject:subjetct, // Subject line
+            text: "Su estado de su pedido es:", // plain text body
             html: `
-            <h1>Su pedido a sido enviado :)</h1>
-            <p>Pronto le llegara un mensaje cuando el pedido este llegando</p>
+            <h1>${mensaje}</h1>
+            <p>${cuerpo}</p>
             `
         });
         

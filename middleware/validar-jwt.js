@@ -44,9 +44,9 @@ const validarAdminRol = async (req,res,next)=>{
     const id = req._id;
 
     try {
-        console.log(id)
+        
         const usuario = await Usuario.findById(id);
-        console.log(usuario)
+
         if (!usuario){
             return res.status(404).json({
 

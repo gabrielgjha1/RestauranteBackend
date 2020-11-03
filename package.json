@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon index.js",
-    "start":"node index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "express-fileupload": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.10",
+    "nodemailer": "^6.4.14",
     "uuid": "^8.3.1"
   },
   "devDependencies": {
